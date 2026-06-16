@@ -57,3 +57,33 @@ html, body {
 .hover-text-blue:hover { color: #1B5C9B !important; }
 .hover-transform-shadow { transition: all 0.15s; }
 .hover-transform-shadow:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(15,41,66,0.12) !important; }
+
+/* Premium Banner Responsive Styles */
+.premium-banner {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 30px);
+  background: linear-gradient(120deg, #0F2942 0%, #1B5C9B 100%);
+  border-radius: 20px;
+  padding: clamp(22px, 3vw, 32px) 56px;
+  cursor: pointer;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.premium-banner-img {
+  flex-shrink: 0;
+  width: clamp(200px, 30vw, 300px);
+  height: 180px;
+  border-radius: 16px;
+}
+
+@media (max-width: 640px) {
+  .premium-banner {
+    padding: clamp(20px, 3vw, 24px) 24px !important;
+    justify-content: center !important;
+  }
+  .premium-banner-img {
+    margin: 8px auto 0 !important;
+  }
+}
