@@ -73,7 +73,7 @@ export default function HospitalDetail() {
           <div style={{ background: 'linear-gradient(135deg,#1B5C9B,#2E86C1)', borderRadius: '16px', padding: '20px', boxShadow: '0 8px 20px rgba(27,92,155,0.25)' }}>
             <div style={{ color: '#fff', fontSize: '15.5px', fontWeight: 700 }}>궁금한 점이 있으세요?</div>
             <div style={{ color: '#D6E8F7', fontSize: '13px', marginTop: '5px', lineHeight: 1.5 }}>증상을 남기면 병원이 공식 답변을 드려요</div>
-            <div onClick={() => navigate('/qna', { state: { hospitalId: id } })} style={{ marginTop: '14px', background: '#fff', color: '#1B5C9B', borderRadius: '10px', padding: '12px', textAlign: 'center', fontSize: '15px', fontWeight: 800, cursor: 'pointer' }} className="hover-opacity">
+            <div onClick={() => navigate('/qna/write', { state: { hospitalId: id } })} style={{ marginTop: '14px', background: '#fff', color: '#1B5C9B', borderRadius: '10px', padding: '12px', textAlign: 'center', fontSize: '15px', fontWeight: 800, cursor: 'pointer' }} className="hover-opacity">
               질문하기
             </div>
           </div>
