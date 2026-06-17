@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { saveHospitalToStore } from '../data/mockData';
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { hospitals, saveHospitalToStore } from '../data/mockData';
 
 export default function HospitalRegister() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const editId = searchParams.get('editId');
+
   const [formData, setFormData] = useState({
     name: '',
     director: '',
@@ -15,6 +18,28 @@ export default function HospitalRegister() {
     bgImage: ''
   });
   const [previewImage, setPreviewImage] = useState('');
+
+  // Pre-populate form when in edit mode
+  useEffect(() => {
+    if (editId) {
+      const existing = hospitals.find(h => h.id === editId);
+      if (existing) {
+        setFormData({
+          name: existing.name || '',
+          director: existing.director || '대표원장', // fallback if empty
+          phone: existing.phone || '',
+          category: existing.cats?.[0] || '',
+          address: existing.address || '',
+          website: existing.website === '#' ? '' : existing.website,
+          desc: existing.desc || '',
+          bgImage: existing.bgImage || ''
+        });
+        if (existing.bgImage) {
+          setPreviewImage(existing.bgImage);
+        }
+      }
+    }
+  }, [editId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +76,7 @@ export default function HospitalRegister() {
     }
 
     const newHospital = {
-      id: 'h_' + Date.now(),
+      id: editId ? editId : 'h_' + Date.now(),
       name: formData.name,
       cats: [formData.category],
       region: region,
@@ -60,12 +85,12 @@ export default function HospitalRegister() {
       website: formData.website || '#',
       desc: formData.desc || `${formData.name}입니다.`,
       bgImage: formData.bgImage || '',
-      openedAt: new Date().toISOString().substring(0, 7).replace('-', '.') // e.g. 2026.06
+      openedAt: editId ? (hospitals.find(h => h.id === editId)?.openedAt || '2026.06') : new Date().toISOString().substring(0, 7).replace('-', '.') // preserve opening date
     };
 
     saveHospitalToStore(newHospital);
-    alert('병원 정보 등록이 완료되었습니다!');
-    navigate('/');
+    alert(editId ? '병원 정보 수정이 완료되었습니다!' : '병원 정보 등록이 완료되었습니다!');
+    navigate(editId ? `/hospital/${editId}` : '/');
   };
 
   return (
@@ -79,10 +104,12 @@ export default function HospitalRegister() {
             <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
         </div>
-        <h1 style={{ fontSize: '24px', fontWeight: 800, color: '#0F2942', margin: '0 0 8px 0', letterSpacing: '-0.6px' }}>병원 정보 등록</h1>
+        <h1 style={{ fontSize: '24px', fontWeight: 800, color: '#0F2942', margin: '0 0 8px 0', letterSpacing: '-0.6px' }}>
+          {editId ? '병원 정보 수정' : '병원 정보 등록'}
+        </h1>
         <p style={{ fontSize: '14px', color: '#64748B', fontWeight: 500, margin: 0, lineHeight: 1.5 }}>
-          우리닥터와 함께할 병원 정보를 입력해주세요.<br />
-          한 번에 입력하면 끝, 3분이면 충분해요.
+          {editId ? '등록된 병원 정보를 수정할 수 있습니다.' : '우리닥터와 함께할 병원 정보를 입력해주세요.'}<br />
+          {editId ? '수정을 마친 뒤 완료 버튼을 눌러주세요.' : '한 번에 입력하면 끝, 3분이면 충분해요.'}
         </p>
       </div>
 
@@ -244,7 +271,7 @@ export default function HospitalRegister() {
           className="hover-bg-blue" 
           style={{ width: '100%', border: 'none', background: '#1B5C9B', color: '#fff', fontSize: '16px', fontWeight: 700, padding: '16px', borderRadius: '14px', cursor: 'pointer', boxShadow: '0 4px 12px rgba(27,92,155,0.2)', transition: 'background 0.2s' }}
         >
-          등록하기
+          {editId ? '수정 완료' : '등록하기'}
         </button>
       </form>
 

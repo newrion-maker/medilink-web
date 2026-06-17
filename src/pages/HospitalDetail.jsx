@@ -69,6 +69,11 @@ export default function HospitalDetail() {
               병원 홈페이지
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M6 2h8v8M14 2 6.5 9.5M11 9.5V14H2V5h4.5" stroke="#1B5C9B" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
+            
+            <div onClick={() => navigate(`/hospital/register?editId=${id}`)} className="hover-bg-light" style={{ marginTop: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', border: '1.5px solid #64748B', color: '#64748B', borderRadius: '10px', padding: '12px', fontSize: '14.5px', fontWeight: 700, cursor: 'pointer' }}>
+              병원 정보 수정
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
           </div>
           <div style={{ background: 'linear-gradient(135deg,#1B5C9B,#2E86C1)', borderRadius: '16px', padding: '20px', boxShadow: '0 8px 20px rgba(27,92,155,0.25)' }}>
             <div style={{ color: '#fff', fontSize: '15.5px', fontWeight: 700 }}>궁금한 점이 있으세요?</div>
