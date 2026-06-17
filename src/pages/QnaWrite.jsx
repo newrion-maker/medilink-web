@@ -13,12 +13,21 @@ export default function QnaWrite() {
   const [content, setContent] = useState('');
 
   useEffect(() => {
+    let targetHospitalId = '';
     if (location.state?.hospitalId) {
-      setSelectedHospitalId(location.state.hospitalId);
+      targetHospitalId = location.state.hospitalId;
+      setSelectedHospitalId(targetHospitalId);
     }
-    if (location.state?.category) {
+    
+    if (targetHospitalId) {
+      const hos = hospitals.find(h => h.id === targetHospitalId);
+      if (hos && hos.cats && hos.cats.length > 0) {
+        setSelectedCat(hos.cats[0]);
+      }
+    } else if (location.state?.category) {
       setSelectedCat(location.state.category);
     }
+    
     if (location.state?.title) {
       setTitle(location.state.title);
     }
@@ -52,30 +61,21 @@ export default function QnaWrite() {
           <div style={{ fontSize: '14.5px', fontWeight: 700, marginBottom: '10px' }}>병원 선택 <span style={{ color: '#C0392B' }}>*</span></div>
           <select 
             value={selectedHospitalId} 
-            onChange={e => setSelectedHospitalId(e.target.value)}
+            onChange={e => {
+              const id = e.target.value;
+              setSelectedHospitalId(id);
+              const hos = hospitals.find(h => h.id === id);
+              if (hos && hos.cats && hos.cats.length > 0) {
+                setSelectedCat(hos.cats[0]);
+              } else {
+                setSelectedCat('');
+              }
+            }}
             style={{ width: '100%', padding: '14px 16px', borderRadius: '12px', border: '1px solid #E2E8F0', outline: 'none', fontSize: '15px', fontFamily: 'inherit', color: '#334155', background: '#F8FAFC' }}
           >
             <option value="">질문을 남길 병원을 선택하세요</option>
             {hospitals.map(h => <option key={h.id} value={h.id}>{h.name}</option>)}
           </select>
-        </div>
-
-        <div style={{ marginBottom: '24px' }}>
-          <div style={{ fontSize: '14.5px', fontWeight: 700, marginBottom: '10px' }}>진료과목 <span style={{ color: '#C0392B' }}>*</span></div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {QCATS.map(c => {
-              const active = selectedCat === c;
-              return (
-                <div 
-                  key={c} 
-                  onClick={() => setSelectedCat(c)} 
-                  style={{ padding: '8px 16px', borderRadius: '999px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', border: `1px solid ${active ? '#1B5C9B' : '#E2E8F0'}`, background: active ? '#1B5C9B' : '#fff', color: active ? '#fff' : '#475569' }}
-                >
-                  {c}
-                </div>
-              );
-            })}
-          </div>
         </div>
 
         <div style={{ marginBottom: '24px' }}>
