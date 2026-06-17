@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { columns, hospitals } from '../data/mockData';
-import { catColor, getColumnBg } from '../utils/helpers';
+import { catColor, getColumnBg, getHospitalBg } from '../utils/helpers';
 
 export default function HealthDetail() {
   const { id } = useParams();
@@ -34,9 +34,7 @@ export default function HealthDetail() {
 
           {/* 작성자 */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '22px', padding: '16px', background: '#F8FAFC', borderRadius: '12px' }}>
-            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#1B5C9B', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', fontWeight: 800, flexShrink: 0 }}>
-              {column.author.charAt(0)}
-            </div>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: getHospitalBg(hospital?.bgImage || hospital?.id), flexShrink: 0 }}></div>
             <div>
               <div style={{ fontSize: '15px', fontWeight: 800 }}>{column.author} 원장</div>
               <div style={{ fontSize: '13px', color: '#64748B', marginTop: '3px' }}>{hospital?.name} · {column.date}</div>
