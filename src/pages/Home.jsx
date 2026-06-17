@@ -85,7 +85,10 @@ export default function Home() {
 
       {/* Quick Categories */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '36px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>진료과목 빠른 선택</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ width: '4px', height: '18px', background: '#1B5C9B', borderRadius: '4px', display: 'inline-block' }}></span>
+          <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>진료과목 빠른 선택</div>
+        </div>
         <div onClick={() => navigate('/hospitals')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
       </div>
       <div className="category-grid">
@@ -108,7 +111,10 @@ export default function Home() {
 
       {/* Popular Q&A */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '42px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>인기 Q&amp;A</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ width: '4px', height: '18px', background: '#1B5C9B', borderRadius: '4px', display: 'inline-block' }}></span>
+          <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>인기 Q&amp;A</div>
+        </div>
         <div onClick={() => navigate('/qna')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
       </div>
       <div style={{ background: '#fff', borderRadius: '16px', boxShadow: '0 2px 10px rgba(15,41,66,0.06)', overflow: 'hidden' }}>
@@ -117,7 +123,10 @@ export default function Home() {
 
       {/* Recommended Hospitals */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '40px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>추천 병원</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ width: '4px', height: '18px', background: '#1B5C9B', borderRadius: '4px', display: 'inline-block' }}></span>
+          <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>추천 병원</div>
+        </div>
         <div onClick={() => navigate('/hospitals')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(228px, 1fr))', gap: '18px' }}>
@@ -127,7 +136,8 @@ export default function Home() {
       {/* Newly Opened Hospitals */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '44px 0 16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>새로 문 연 병원</div>
+          <span style={{ width: '4px', height: '18px', background: '#1E8449', borderRadius: '4px', display: 'inline-block' }}></span>
+          <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>새로 문 연 병원</div>
           <span style={{ background: '#E8F6EE', color: '#1E8449', fontSize: '11px', fontWeight: 800, padding: '3px 9px', borderRadius: '6px' }}>NEW</span>
         </div>
         <div onClick={() => navigate('/hospitals', { state: { category: '신규개원' } })} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
@@ -143,7 +153,8 @@ export default function Home() {
       {premHospital && (
         <>
           <div style={{ display: 'flex', alignItems: 'center', gap: '9px', margin: '46px 0 16px' }}>
-            <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>프리미엄 제휴 병원</div>
+            <span style={{ width: '4px', height: '18px', background: '#D97706', borderRadius: '4px', display: 'inline-block' }}></span>
+            <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>프리미엄 제휴 병원</div>
             <span style={{ background: 'linear-gradient(135deg,#F4C24B,#E0A82E)', color: '#0F2942', fontSize: '11px', fontWeight: 800, padding: '3px 9px', borderRadius: '6px' }}>프리미엄 제휴</span>
           </div>
           <div onMouseEnter={() => setPremPaused(true)} onMouseLeave={() => setPremPaused(false)} style={{ position: 'relative' }}>
@@ -182,7 +193,10 @@ export default function Home() {
 
       {/* Event Banner */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '42px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>진행 중 이벤트</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ width: '4px', height: '18px', background: '#2563EB', borderRadius: '4px', display: 'inline-block' }}></span>
+          <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>진행 중 이벤트</div>
+        </div>
         <div onClick={() => navigate('/events')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
       </div>
       {featuredEvent && (
@@ -247,7 +261,10 @@ export default function Home() {
 
       {/* Health Columns */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '42px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>건강정보</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ width: '4px', height: '18px', background: '#7C3AED', borderRadius: '4px', display: 'inline-block' }}></span>
+          <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>건강정보</div>
+        </div>
         <div onClick={() => navigate('/health')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
