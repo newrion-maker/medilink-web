@@ -74,7 +74,7 @@ export default function Home() {
           { name: '외과', icon: <><path d="M22 6 9 19l-3 7 7-3L26 9c1-1 1-2 0-3s-3-1-4 0Z" stroke="#1B5C9B" strokeWidth="2" strokeLinejoin="round"/><path d="m18 10 4 4" stroke="#1B5C9B" strokeWidth="2"/></> },
           { name: '산부인과', icon: <><circle cx="16" cy="12" r="6.5" stroke="#1B5C9B" strokeWidth="2"/><path d="M16 18.5V27M12 23h8" stroke="#1B5C9B" strokeWidth="2" strokeLinecap="round"/></> },
           { name: '소아과', icon: <><circle cx="16" cy="15" r="9" stroke="#1B5C9B" strokeWidth="2"/><circle cx="13" cy="14" r="1.1" fill="#1B5C9B"/><circle cx="19" cy="14" r="1.1" fill="#1B5C9B"/><path d="M13 19a4 3 0 0 0 6 0" stroke="#1B5C9B" strokeWidth="2" strokeLinecap="round"/></> },
-          { name: '정형외과', icon: <><path d="M11 21 21 11" stroke="#1B5C9B" strokeWidth="2.4" strokeLinecap="round"/><path d="M11 21c-1 1-2.6 1-3.6 0s-1-2.6 0-3.6c-1-1-1-2.6 0-3.6s2.6-1 3.6 0M21 11c1-1 2.6-1 3.6 0s1 2.6 0 3.6c1 1 1 2.6 0 3.6s-2.6 1-3.6 0" stroke="#1B5C9B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></> },
+          { name: '정형외과', icon: <><path d="M11 21 21 11" stroke="#1B5C9B" strokeWidth="2.4" strokeLinecap="round"/><path d="M11 21c-1 1-2.6 1-3.6 0s-1-2.6 0-3.6c-1-1-1-2.6 0-3.6s2.6-1 3.6 0M21 11c1-1 2.6-1 3.6 0s1 2.6 0 3.6c1 1 1 2.6 0 3.6s-2.6 1-3.6 0" stroke="#1B5C9B" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/></> },
           { name: '치과', icon: <><path d="M16 6c-4 0-8 1.6-8 6 0 5.5 2.5 14 4.2 14 1.5 0 1.3-6 3.8-6s2.3 6 3.8 6C25.5 26 24 17.5 24 12c0-4.4-4-6-8-6Z" stroke="#1B5C9B" strokeWidth="2" strokeLinejoin="round"/></> },
           { name: '안과', icon: <><path d="M4 16s5-7.5 12-7.5S28 16 28 16s-5 7.5-12 7.5S4 16 4 16Z" stroke="#1B5C9B" strokeWidth="2" strokeLinejoin="round"/><circle cx="16" cy="16" r="3.2" stroke="#1B5C9B" strokeWidth="2"/></> },
           { name: '전체', icon: <><rect x="7" y="7" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/><rect x="18" y="7" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/><rect x="7" y="18" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/><rect x="18" y="18" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/></> }
@@ -84,6 +84,39 @@ export default function Home() {
             <span style={{ fontSize: '13.5px', fontWeight: 600, color: '#334155' }}>{cat.name === '전체' ? '더보기' : cat.name}</span>
           </div>
         ))}
+      </div>
+
+      {/* Popular Q&A */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '42px 0 16px' }}>
+        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>인기 Q&amp;A</div>
+        <div onClick={() => navigate('/qna')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
+      </div>
+      <div style={{ background: '#fff', borderRadius: '16px', boxShadow: '0 2px 10px rgba(15,41,66,0.06)', overflow: 'hidden' }}>
+        {popularQna.map(q => <QnaCard key={q.id} qna={q} hospitalName={getHospitalName(q.hospitalId)} />)}
+      </div>
+
+      {/* Recommended Hospitals */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '40px 0 16px' }}>
+        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>추천 병원</div>
+        <div onClick={() => navigate('/hospitals')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(228px, 1fr))', gap: '18px' }}>
+        {recommended.map(h => <HospitalCard key={h.id} hospital={h} />)}
+      </div>
+
+      {/* Newly Opened Hospitals */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '44px 0 16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>새로 문 연 병원</div>
+          <span style={{ background: '#E8F6EE', color: '#1E8449', fontSize: '11px', fontWeight: 800, padding: '3px 9px', borderRadius: '6px' }}>NEW</span>
+        </div>
+        <div onClick={() => navigate('/hospitals', { state: { category: '신규개원' } })} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
+      </div>
+      <div style={{ fontSize: '14px', color: '#64748B', marginTop: '-8px', marginBottom: '16px', lineHeight: 1.4 }}>
+        우리 동네에 최근 개원한 병원이에요. 가장 먼저 만나보세요.
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(228px, 1fr))', gap: '18px' }}>
+        {newlyOpened.map(h => <HospitalCard key={h.id} hospital={h} />)}
       </div>
 
       {/* Premium Hospitals Carousel */}
@@ -126,39 +159,6 @@ export default function Home() {
           </div>
         </>
       )}
-
-      {/* Recommended Hospitals */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '40px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>추천 병원</div>
-        <div onClick={() => navigate('/hospitals')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(228px, 1fr))', gap: '18px' }}>
-        {recommended.map(h => <HospitalCard key={h.id} hospital={h} />)}
-      </div>
-
-      {/* Newly Opened Hospitals */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '44px 0 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>새로 문 연 병원</div>
-          <span style={{ background: '#E8F6EE', color: '#1E8449', fontSize: '11px', fontWeight: 800, padding: '3px 9px', borderRadius: '6px' }}>NEW</span>
-        </div>
-        <div onClick={() => navigate('/hospitals', { state: { category: '신규개원' } })} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
-      </div>
-      <div style={{ fontSize: '14px', color: '#64748B', marginTop: '-8px', marginBottom: '16px', lineHeight: 1.4 }}>
-        우리 동네에 최근 개원한 병원이에요. 가장 먼저 만나보세요.
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(228px, 1fr))', gap: '18px' }}>
-        {newlyOpened.map(h => <HospitalCard key={h.id} hospital={h} />)}
-      </div>
-
-      {/* Popular Q&A */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '42px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>인기 Q&amp;A</div>
-        <div onClick={() => navigate('/qna')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
-      </div>
-      <div style={{ background: '#fff', borderRadius: '16px', boxShadow: '0 2px 10px rgba(15,41,66,0.06)', overflow: 'hidden' }}>
-        {popularQna.map(q => <QnaCard key={q.id} qna={q} hospitalName={getHospitalName(q.hospitalId)} />)}
-      </div>
 
       {/* Event Banner */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '42px 0 16px' }}>
