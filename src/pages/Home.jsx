@@ -28,7 +28,7 @@ export default function Home() {
   const popularQna = qnaSeed.filter(q => q.status === 'answered').slice(0, 3);
   const featuredEvent = events[3];
   const eventCards = [events[0], events[4], events[5], events[1]].filter(Boolean);
-  const homeColumns = columns.slice(0, 2);
+  const homeColumns = columns.slice(0, 3);
 
   const handleSearch = () => {
     if (search.trim()) {
