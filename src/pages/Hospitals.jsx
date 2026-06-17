@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { hospitals } from '../data/mockData';
 import { HospitalCard } from '../components/Cards';
 
-const HCATS = ['전체', '신규개원', '내과', '외과', '산부인과', '소아과', '정형외과', '치과', '안과', '이비인후과', '가정의학과', '피부과', '성형외과'];
+const HCATS = ['전체', '신규개원', '내과', '외과', '산부인과', '소아과', '정형외과', '치과', '안과', '이비인후과', '피부과', '성형외과'];
 
 export default function Hospitals() {
   const location = useLocation();
@@ -28,7 +28,6 @@ export default function Hospitals() {
     if (/치과|이빨|임플란트|충치|스케일링/.test(q)) return '치과';
     if (/눈|안과|시력|라식|라섹|백내장|눈곱/.test(q)) return '안과';
     if (/귀|코|목|이비인후|비염|중이염|코걸이/.test(q)) return '이비인후과';
-    if (/가정|만성질환|상담/.test(q)) return '가정의학과';
     if (/피부|아토피|여드름|점|무좀|색소|기미/.test(q)) return '피부과';
     if (/성형|쌍꺼풀|필러|보톡스|리프팅|쁘띠/.test(q)) return '성형외과';
     return null;
