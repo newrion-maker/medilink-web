@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import TabBar from './components/TabBar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Hospitals from './pages/Hospitals';
 import HospitalDetail from './pages/HospitalDetail';
@@ -19,6 +20,7 @@ import AiChat from './pages/AiChat';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <div className="ml-footpad" style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 'calc(100vh - 66px)' }}>
         <div style={{ maxWidth: '1080px', margin: '0 auto', width: '100%', padding: '0 clamp(16px,4vw,28px)', flex: 1 }}>
