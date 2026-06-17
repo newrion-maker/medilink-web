@@ -148,7 +148,7 @@ export default function Home() {
           </div>
           <div onMouseEnter={() => setPremPaused(true)} onMouseLeave={() => setPremPaused(false)} style={{ position: 'relative' }}>
             <div onClick={() => navigate(`/hospital/${premHospital.id}`)} className="hover-transform-shadow premium-banner">
-              <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+              <div className="premium-banner-content" style={{ flex: '1 1 320px', minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', background: '#F4C24B', color: '#0F2942', fontSize: '11.5px', fontWeight: 800, padding: '4px 10px', borderRadius: '6px' }}>★ 프리미엄 제휴</span>
                   <span style={catColorStrong(premHospital.cats[0])}>{premHospital.cats.join(' · ')}</span>
