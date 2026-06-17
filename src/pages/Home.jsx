@@ -59,16 +59,16 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Centered Heading */}
-          <div style={{ textAlign: 'center', width: '100%', paddingTop: 'clamp(24px, 4vw, 48px)' }}>
+          {/* Heading */}
+          <div className="hero-text-section">
             <div style={{ fontSize: 'clamp(26px,3.4vw,40px)', fontWeight: 800, lineHeight: 1.3, letterSpacing: '-1.2px' }}>
               남양주 <span style={{ color: '#1B5C9B' }}>안심 병원</span>들과 함께하는<br/>우리 가족 건강 관리
             </div>
             <div style={{ fontSize: 'clamp(14px,1.5vw,17px)', color: '#46637F', fontWeight: 600, marginTop: '14px' }}>남양주 지역 의료 커뮤니티 플랫폼</div>
           </div>
 
-          {/* Centered Large Search Bar */}
-          <div style={{ width: '100%', maxWidth: '820px', margin: '0 auto', paddingBottom: '36px' }}>
+          {/* Large Search Bar */}
+          <div className="hero-search-section">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: 'clamp(13px, 1.6vw, 15px)', fontWeight: 700, color: '#1E293B', paddingLeft: '4px' }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1B5C9B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               <span>증상이나 병원 이름으로 검색하고, 우리닥터에게 물어보세요</span>

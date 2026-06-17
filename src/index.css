@@ -102,13 +102,14 @@ html, body {
   inset: 0;
   max-width: 1600px;
   margin: 0 auto;
-  background: url('/uploads/hero2.png?v=2') center bottom / contain no-repeat;
+  background: url('/uploads/hero2.png?v=2') right bottom / contain no-repeat;
+  transition: opacity 0.3s;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(229,241,254,0.85) 0%, rgba(229,241,254,0.3) 40%, rgba(229,241,254,0) 75%);
+  background: linear-gradient(to right, rgba(229,241,254,0.95) 0%, rgba(229,241,254,0.8) 40%, rgba(229,241,254,0) 85%);
   pointer-events: none;
 }
 
@@ -123,6 +124,20 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.hero-text-section {
+  text-align: left;
+  width: 100%;
+  max-width: 580px;
+  padding-top: clamp(48px, 6vw, 76px);
+}
+
+.hero-search-section {
+  width: 100%;
+  max-width: 620px;
+  margin: 0;
+  padding-bottom: 36px;
 }
 
 /* Department Grid Responsive Styles */
@@ -155,13 +170,29 @@ html, body {
   color: #334155;
 }
 
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(229,241,254,0.9) 0%, rgba(229,241,254,0.5) 50%, rgba(229,241,254,0.2) 100%);
+  }
+}
+
 @media (max-width: 640px) {
   .hero-illustration {
     background-size: cover;
     background-position: 58% bottom;
+    opacity: 0.3;
   }
   .hero-content-box {
     min-height: 480px !important;
+  }
+  .hero-text-section {
+    text-align: center;
+    max-width: 100%;
+    padding-top: clamp(24px, 4vw, 48px);
+  }
+  .hero-search-section {
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   .category-grid {
