@@ -188,20 +188,7 @@ export default function Home() {
       {featuredEvent && (
         <div 
           onClick={() => navigate(`/event/${featuredEvent.id}`)} 
-          className="hover-transform-shadow" 
-          style={{ 
-            position: 'relative',
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between',
-            background: 'linear-gradient(135deg, #E6F0FA 0%, #F5F9FE 50%, #E8F2FD 100%)', 
-            borderRadius: '22px', 
-            padding: '24px 32px', 
-            cursor: 'pointer', 
-            overflow: 'hidden',
-            minHeight: '180px',
-            border: '1px solid #DFECF9'
-          }}
+          className="event-banner-card hover-transform-shadow"
         >
           {/* Confetti Decorative Background SVG */}
           <div style={{ position: 'absolute', inset: 0, opacity: 0.8, pointerEvents: 'none', zIndex: 1 }}>
@@ -215,7 +202,7 @@ export default function Home() {
           </div>
 
           {/* Left Contents */}
-          <div style={{ position: 'relative', zIndex: 3, flex: '1 1 360px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div className="event-banner-content" style={{ position: 'relative', zIndex: 3, flex: '1 1 360px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
             {/* Top Benefit Badge */}
             <div>
               <span style={{ background: '#2563EB', color: '#fff', fontSize: '12px', fontWeight: 800, padding: '5px 12px', borderRadius: '6px', boxShadow: '0 2px 6px rgba(37,99,235,0.2)' }}>
@@ -225,10 +212,10 @@ export default function Home() {
 
             {/* Titles */}
             <div>
-              <div style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 900, color: '#0F2942', letterSpacing: '-0.8px', lineHeight: 1.25 }}>
+              <div className="event-banner-title" style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 900, color: '#0F2942', letterSpacing: '-0.8px', lineHeight: 1.25 }}>
                 환절기 독감 <span style={{ color: '#2563EB' }}>예방접종</span> 예약
               </div>
-              <div style={{ fontSize: '15px', color: '#4B5563', fontWeight: 600, marginTop: '6px' }}>
+              <div className="event-banner-subtitle" style={{ fontSize: '15px', color: '#4B5563', fontWeight: 600, marginTop: '6px' }}>
                 사전예약 시 <span style={{ color: '#2563EB', fontWeight: 800 }}>5,000원 할인</span>
               </div>
             </div>
@@ -247,8 +234,6 @@ export default function Home() {
               </span>
             </div>
           </div>
-
-
 
           {/* Right Blended Hospital Image */}
           <div className="event-banner-hospital" style={{ position: 'relative', width: '220px', height: '140px', borderRadius: '16px', overflow: 'hidden', flexShrink: 0, zIndex: 2, marginLeft: '24px' }}>
