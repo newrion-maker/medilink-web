@@ -43,10 +43,10 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <div style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', background: '#E5F1FE', overflow: 'hidden', position: 'relative' }}>
-        <div style={{ position: 'absolute', inset: 0, maxWidth: '1600px', margin: '0 auto', background: `url('/uploads/hero2.png?v=2') center bottom / contain no-repeat` }}></div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(229,241,254,0.85) 0%, rgba(229,241,254,0.3) 40%, rgba(229,241,254,0) 75%)', pointerEvents: 'none' }}></div>
-        <div style={{ maxWidth: '1080px', width: '100%', margin: '0 auto', padding: '0 clamp(16px,4vw,28px)', position: 'relative', zIndex: 2, minHeight: 'clamp(440px, 46vw, 640px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <div className="hero-bg-container">
+        <div className="hero-illustration"></div>
+        <div className="hero-overlay"></div>
+        <div className="hero-content-box">
           {/* Centered Heading */}
           <div style={{ textAlign: 'center', width: '100%', paddingTop: 'clamp(48px, 6vw, 76px)' }}>
             <div style={{ fontSize: 'clamp(26px,3.4vw,40px)', fontWeight: 800, lineHeight: 1.3, letterSpacing: '-1.2px' }}>
@@ -78,7 +78,7 @@ export default function Home() {
         <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>진료과목 빠른 선택</div>
         <div onClick={() => navigate('/hospitals')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(108px, 1fr))', gap: '12px' }}>
+      <div className="category-grid">
         {[
           { name: '내과', icon: <><path d="M9 5v6a5 5 0 0 0 10 0V5" stroke="#1B5C9B" strokeWidth="2" strokeLinecap="round"/><path d="M14 20.5v2a6 6 0 0 0 12 0v-2.5" stroke="#1B5C9B" strokeWidth="2" strokeLinecap="round"/><circle cx="26" cy="17" r="2.6" stroke="#1B5C9B" strokeWidth="2"/><path d="M9 5h0M19 5h0" stroke="#1B5C9B" strokeWidth="3" strokeLinecap="round"/></> },
           { name: '외과', icon: <><path d="M22 6 9 19l-3 7 7-3L26 9c1-1 1-2 0-3s-3-1-4 0Z" stroke="#1B5C9B" strokeWidth="2" strokeLinejoin="round"/><path d="m18 10 4 4" stroke="#1B5C9B" strokeWidth="2"/></> },
@@ -89,9 +89,9 @@ export default function Home() {
           { name: '안과', icon: <><path d="M4 16s5-7.5 12-7.5S28 16 28 16s-5 7.5-12 7.5S4 16 4 16Z" stroke="#1B5C9B" strokeWidth="2" strokeLinejoin="round"/><circle cx="16" cy="16" r="3.2" stroke="#1B5C9B" strokeWidth="2"/></> },
           { name: '전체', icon: <><rect x="7" y="7" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/><rect x="18" y="7" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/><rect x="7" y="18" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/><rect x="18" y="18" width="7" height="7" rx="2" stroke="#1B5C9B" strokeWidth="2"/></> }
         ].map(cat => (
-          <div key={cat.name} onClick={() => navigate('/hospitals', { state: { category: cat.name } })} className="hover-transform-shadow" style={{ background: '#fff', border: '1px solid #EDF1F6', borderRadius: '16px', padding: '20px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '11px', cursor: 'pointer' }}>
-            <svg width="30" height="30" viewBox="0 0 32 32" fill="none">{cat.icon}</svg>
-            <span style={{ fontSize: '13.5px', fontWeight: 600, color: '#334155' }}>{cat.name === '전체' ? '더보기' : cat.name}</span>
+          <div key={cat.name} onClick={() => navigate('/hospitals', { state: { category: cat.name } })} className="hover-transform-shadow category-card">
+            <svg viewBox="0 0 32 32" fill="none">{cat.icon}</svg>
+            <span>{cat.name === '전체' ? '더보기' : cat.name}</span>
           </div>
         ))}
       </div>
@@ -153,7 +153,7 @@ export default function Home() {
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 2.5h2.5L7 6 5 7.3c.8 1.7 2 2.9 3.7 3.7L10 9l3.5 1.5V13a1.5 1.5 0 0 1-1.7 1.5C6.6 14 2 9.4 1.5 4.2A1.5 1.5 0 0 1 3 2.5Z" stroke="#9DB2C9" strokeWidth="1.4" strokeLinejoin="round"/></svg>{premHospital.phone}</span>
                 </div>
               </div>
-              <div className="premium-banner-img" style={{ background: getHospitalBg(premHospital.id) }}></div>
+              <div className="premium-banner-img" style={{ background: getHospitalBg(premHospital.bgImage || premHospital.id) }}></div>
             </div>
             <div onClick={(e) => { e.stopPropagation(); setPremIdx(prev => (prev - 1 + premiumHospitals.length) % premiumHospitals.length); }} className="hover-opacity" style={{ position: 'absolute', left: '10px', top: 'calc(50% - 20px)', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.95)', boxShadow: '0 4px 14px rgba(0,0,0,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 3 }}>
               <svg width="10" height="16" viewBox="0 0 11 19" fill="none"><path d="M9.5 1.5 2 9.5l7.5 8" stroke="#0F2942" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round"/></svg>

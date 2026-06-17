@@ -20,7 +20,7 @@ export function HospitalCard({ hospital }) {
       }} 
       className="hover-transform-shadow"
     >
-      <div style={{ position: 'relative', height: '130px', background: getHospitalBg(hospital.id) }}>
+      <div style={{ position: 'relative', height: '130px', background: getHospitalBg(hospital.bgImage || hospital.id) }}>
         <span style={{ position: 'absolute', top: '12px', left: '12px', ...catColorStrong(hospital.cats[0]) }}>{catText}</span>
         {isNew && (
           <span style={{ 

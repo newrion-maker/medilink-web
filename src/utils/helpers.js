@@ -31,6 +31,9 @@ export const catColorStrong = (cat) => {
 };
 
 export const getHospitalBg = (id) => {
+  if (id && (id.startsWith('/') || id.startsWith('http') || id.startsWith('data:'))) {
+    return `#E6EDF4 url('${id}') center/cover no-repeat`;
+  }
   const map = {
     'h1': '/uploads/hospital.png',       // 다산연세내과 → 내과(기존)
     'h2': '/uploads/hospital_ped.png',   // 별내자연드림소아과

@@ -30,7 +30,7 @@ export default function Footer() {
             <div onClick={comingSoon} style={{ fontSize: '13.5px', color: '#9DB2C9', cursor: 'pointer' }} className="hover-text-blue">공지사항</div>
             <div onClick={comingSoon} style={{ fontSize: '13.5px', color: '#9DB2C9', cursor: 'pointer' }} className="hover-text-blue">자주 묻는 질문</div>
             <div onClick={comingSoon} style={{ fontSize: '13.5px', color: '#9DB2C9', cursor: 'pointer' }} className="hover-text-blue">1:1 문의</div>
-            <div onClick={comingSoon} style={{ fontSize: '13.5px', color: '#9DB2C9', cursor: 'pointer' }} className="hover-text-blue">병원 입점 문의</div>
+            <div onClick={() => navigate('/admin')} style={{ fontSize: '13.5px', color: '#9DB2C9', cursor: 'pointer' }} className="hover-text-blue">병원 입점/제휴 등록 (관리자)</div>
           </div>
         </div>
       </div>

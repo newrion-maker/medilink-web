@@ -27,7 +27,7 @@ export default function HospitalDetail() {
         뒤로
       </div>
 
-      <div style={{ height: '220px', borderRadius: '18px', background: getHospitalBg(id), marginTop: '8px' }}></div>
+      <div style={{ height: '220px', borderRadius: '18px', background: getHospitalBg(hospital.bgImage || id), marginTop: '8px' }}></div>
       
       <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginTop: '22px' }}>
         {/* Main Content */}

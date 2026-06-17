@@ -1,4 +1,4 @@
-export const hospitals = [
+const initialHospitals = [
   { id:'h1', name:'다산연세내과의원', cats:['내과'], region:'다산동', address:'남양주시 다산중앙로 82', phone:'031-555-1234', website:'#', desc:'소화기 내시경과 만성질환 관리, 종합 건강검진을 전문으로 합니다.' },
   { id:'h2', name:'별내자연드림소아과', cats:['소아과'], region:'별내동', address:'남양주시 별내중앙로 25', phone:'031-555-2345', website:'#', desc:'영유아 검진과 예방접종, 소아 호흡기 질환을 진료합니다.' },
   { id:'h3', name:'평내튼튼정형외과', cats:['정형외과'], region:'평내동', address:'남양주시 경춘로 1542', phone:'031-555-3456', website:'#', desc:'관절·척추 통증과 도수치료, 스포츠 손상을 진료합니다.' },
@@ -13,6 +13,41 @@ export const hospitals = [
   { id:'h12', name:'다산맑은피부과의원', cats:['피부과'], region:'다산동', address:'남양주시 다산중앙로 115', phone:'031-555-2468', website:'#', desc:'여드름, 기미·잡티 색소치료 및 아토피 피부 질환을 진료합니다.' },
   { id:'h13', name:'별내미앤미성형외과의원', cats:['성형외과'], region:'별내동', address:'남양주시 별내중앙로 45', phone:'031-555-1358', website:'#', desc:'쌍꺼풀 수술, 쁘띠 성형(필러·보톡스) 및 안티에이징 리프팅을 진료합니다.' }
 ];
+
+const getStoredHospitals = () => {
+  const stored = localStorage.getItem('ml_hospitals');
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  localStorage.setItem('ml_hospitals', JSON.stringify(initialHospitals));
+  return initialHospitals;
+};
+
+export const hospitals = getStoredHospitals();
+
+export const saveHospitalToStore = (newHosp) => {
+  const list = getStoredHospitals();
+  const idx = list.findIndex(h => h.id === newHosp.id);
+  if (idx > -1) {
+    list[idx] = newHosp;
+  } else {
+    list.push(newHosp);
+  }
+  localStorage.setItem('ml_hospitals', JSON.stringify(list));
+  hospitals.length = 0;
+  hospitals.push(...list);
+};
+
+export const deleteHospitalFromStore = (id) => {
+  const list = getStoredHospitals().filter(h => h.id !== id);
+  localStorage.setItem('ml_hospitals', JSON.stringify(list));
+  hospitals.length = 0;
+  hospitals.push(...list);
+};
 
 export const qnaSeed = [
   { id:'q1', hospitalId:'h2', category:'소아과', title:'아이가 밤마다 기침을 해요', content:'5살 아이인데 낮에는 괜찮다가 잠들면 기침을 심하게 합니다. 가습기를 틀어도 비슷한데 병원에 가야 할까요?', anonymous:false, status:'answered', answerCount:1, answerBy:'박소연', answerRole:'소아청소년과 전문의', answerDate:'2025.06.12', answerText:'야간 기침은 누운 자세에서 분비물이 기도를 자극해 심해질 수 있습니다. 습도를 50~60%로 유지하고 수분을 충분히 주세요. 다만 기침이 2주 이상 지속되거나 호흡이 거칠고 발열이 동반되면 모세기관지염·천식 가능성이 있어 진료가 필요합니다.', createdAt:'2025.06.12', mine:false },
