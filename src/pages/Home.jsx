@@ -45,19 +45,29 @@ export default function Home() {
       {/* Hero */}
       <div style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', background: '#E5F1FE', overflow: 'hidden', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, maxWidth: '1600px', margin: '0 auto', background: `url('/uploads/hero2.png?v=2') center bottom / contain no-repeat` }}></div>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(115% 62% at 0% 0%, rgba(229,241,254,0.94) 0%, rgba(229,241,254,0.7) 30%, rgba(229,241,254,0.25) 48%, rgba(229,241,254,0) 62%)', pointerEvents: 'none' }}></div>
-        <div style={{ maxWidth: '1080px', width: '100%', margin: '0 auto', padding: '0 clamp(16px,4vw,28px)', position: 'relative', zIndex: 2, minHeight: 'clamp(460px, 50vw, 760px)', display: 'flex', alignItems: 'flex-start' }}>
-          <div style={{ flex: '1 1 auto', width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: 'clamp(60px, 8vw, 120px)', paddingBottom: '40px', minWidth: 0 }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center top, rgba(229,241,254,0.92) 0%, rgba(229,241,254,0.6) 50%, rgba(229,241,254,0.1) 100%)', pointerEvents: 'none' }}></div>
+        <div style={{ maxWidth: '1080px', width: '100%', margin: '0 auto', padding: '0 clamp(16px,4vw,28px)', position: 'relative', zIndex: 2, minHeight: 'clamp(440px, 46vw, 640px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          {/* Centered Heading */}
+          <div style={{ textAlign: 'center', width: '100%', paddingTop: 'clamp(48px, 6vw, 76px)' }}>
             <div style={{ fontSize: 'clamp(26px,3.4vw,40px)', fontWeight: 800, lineHeight: 1.3, letterSpacing: '-1.2px' }}>
               남양주 <span style={{ color: '#1B5C9B' }}>안심 병원</span>들과 함께하는<br/>우리 가족 건강 관리
             </div>
             <div style={{ fontSize: 'clamp(14px,1.5vw,17px)', color: '#46637F', fontWeight: 600, marginTop: '14px' }}>남양주 지역 의료 커뮤니티 플랫폼</div>
-            <div style={{ display: 'flex', gap: '10px', marginTop: '24px', maxWidth: '440px', flexWrap: 'wrap' }}>
-              <div style={{ flex: '1 1 220px', display: 'flex', alignItems: 'center', gap: '10px', background: '#fff', borderRadius: '13px', padding: '13px 16px', boxShadow: '0 8px 22px rgba(27,92,155,0.14)' }}>
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.5" stroke="#94A3B8" strokeWidth="2"/><path d="m14 14 4 4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round"/></svg>
-                <input value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="병원·증상을 검색해 보세요" style={{ flex: 1, border: 'none', outline: 'none', fontSize: '14.5px', fontFamily: 'inherit', background: 'transparent', color: '#1A1A2E', minWidth: 0 }} />
+          </div>
+
+          {/* Centered Large Search Bar */}
+          <div style={{ width: '100%', maxWidth: '820px', margin: '0 auto', paddingBottom: '36px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', fontSize: 'clamp(13px, 1.6vw, 15px)', fontWeight: 700, color: '#1E293B', paddingLeft: '4px' }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1B5C9B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>증상이나 병원 이름으로 검색하고, 우리닥터에게 물어보세요</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', background: '#fff', borderRadius: '20px', padding: '6px 8px 6px 20px', boxShadow: '0 12px 36px rgba(27,92,155,0.16)', border: '1px solid #E2E8F0' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '10px', flexShrink: 0 }}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="예) 무릎이 시큰해요, 다산동 소아과" style={{ flex: 1, border: 'none', outline: 'none', fontSize: '15.5px', fontWeight: 500, fontFamily: 'inherit', background: 'transparent', color: '#1A1A2E', minWidth: 0 }} />
+              <div onClick={handleSearch} className="hover-bg-blue" style={{ display: 'flex', alignItems: 'center', gap: '6px', background: '#1B5C9B', color: '#fff', fontSize: '15px', fontWeight: 700, padding: '12px 26px', borderRadius: '15px', cursor: 'pointer', boxShadow: '0 4px 12px rgba(27,92,155,0.2)', flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>검색</span>
               </div>
-              <div onClick={handleSearch} className="hover-bg-blue" style={{ flex: '0 0 auto', background: '#1B5C9B', color: '#fff', fontSize: '14.5px', fontWeight: 700, padding: '13px 24px', borderRadius: '13px', cursor: 'pointer', boxShadow: '0 6px 16px rgba(27,92,155,0.3)' }}>검색</div>
             </div>
           </div>
         </div>
