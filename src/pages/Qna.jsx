@@ -29,8 +29,20 @@ export default function Qna() {
 
   return (
     <div style={{ paddingTop: '14px', position: 'relative' }}>
-      <div style={{ fontSize: '26px', fontWeight: 800, letterSpacing: '-0.6px' }}>의료 Q&amp;A</div>
-      <div style={{ fontSize: '14.5px', color: '#64748B', marginTop: '6px' }}>이웃들의 질문과 동네 전문의의 생생한 답변</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
+        <div>
+          <div style={{ fontSize: '26px', fontWeight: 800, letterSpacing: '-0.6px' }}>의료 Q&amp;A</div>
+          <div style={{ fontSize: '14.5px', color: '#64748B', marginTop: '6px' }}>이웃들의 질문과 동네 전문의의 생생한 답변</div>
+        </div>
+        <div 
+          onClick={() => navigate('/qna/write', { state: { hospitalId: filterHospitalId } })} 
+          className="hover-transform-shadow" 
+          style={{ background: '#1B5C9B', color: '#fff', borderRadius: '12px', padding: '12px 22px', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', flexShrink: 0, boxShadow: '0 4px 12px rgba(27,92,155,0.2)' }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"/></svg>
+          <span style={{ fontSize: '14.5px', fontWeight: 800 }}>질문하기</span>
+        </div>
+      </div>
       
       {filterHospitalId && (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#EAF2FB', color: '#1B5C9B', padding: '8px 14px', borderRadius: '8px', fontSize: '14px', fontWeight: 700, marginTop: '16px' }}>
@@ -62,17 +74,7 @@ export default function Qna() {
         )}
       </div>
       
-      <div style={{ height: '80px' }}></div>
-      
-      {/* Floating Write Button */}
-      <div 
-        onClick={() => navigate('/qna/write', { state: { hospitalId: filterHospitalId } })} 
-        className="hover-transform-shadow" 
-        style={{ position: 'fixed', bottom: '90px', right: 'clamp(16px, 5vw, 40px)', background: '#1B5C9B', color: '#fff', borderRadius: '999px', padding: '14px 24px', display: 'flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(27,92,155,0.35)', cursor: 'pointer', zIndex: 30 }}
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"/></svg>
-        <span style={{ fontSize: '15.5px', fontWeight: 800 }}>질문하기</span>
-      </div>
+      <div style={{ height: '40px' }}></div>
     </div>
   );
 }
