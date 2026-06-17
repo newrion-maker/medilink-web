@@ -182,21 +182,81 @@ export default function Home() {
 
       {/* Event Banner */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '42px 0 16px' }}>
-        <div style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.4px' }}>진행 중 이벤트</div>
+        <div style={{ fontSize: '19px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.4px' }}>진행 중 이벤트</div>
         <div onClick={() => navigate('/events')} className="hover-text-blue" style={{ fontSize: '14px', color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>더보기 ›</div>
       </div>
       {featuredEvent && (
-        <div onClick={() => navigate(`/event/${featuredEvent.id}`)} className="hover-transform-shadow" style={{ display: 'flex', alignItems: 'center', gap: '24px', background: 'linear-gradient(120deg,#E7F1FC,#DCEBFB)', borderRadius: '18px', padding: 'clamp(20px,3vw,30px)', cursor: 'pointer', flexWrap: 'wrap' }}>
-          <div style={{ flex: '1 1 320px', minWidth: 0 }}>
-            <div style={{ fontSize: 'clamp(19px,2.2vw,24px)', fontWeight: 800, letterSpacing: '-0.5px' }}>{featuredEvent.title}</div>
-            <div style={{ fontSize: '14.5px', color: '#46637F', marginTop: '8px' }}>{featuredEvent.benefit}</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '16px', flexWrap: 'wrap' }}>
-              <span style={{ background: '#1B5C9B', color: '#fff', fontSize: '12.5px', fontWeight: 700, padding: '5px 13px', borderRadius: '999px' }}>{getHospitalName(featuredEvent.hospitalId)}</span>
-              <span style={{ fontSize: '13px', color: '#64748B' }}>{featuredEvent.period}</span>
-              <span style={{ fontSize: '13.5px', color: '#C0392B', fontWeight: 800 }}>{featuredEvent.dday}</span>
+        <div 
+          onClick={() => navigate(`/event/${featuredEvent.id}`)} 
+          className="hover-transform-shadow" 
+          style={{ 
+            position: 'relative',
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between',
+            background: 'linear-gradient(135deg, #E6F0FA 0%, #F5F9FE 50%, #E8F2FD 100%)', 
+            borderRadius: '22px', 
+            padding: '24px 32px', 
+            cursor: 'pointer', 
+            overflow: 'hidden',
+            minHeight: '180px',
+            border: '1px solid #DFECF9'
+          }}
+        >
+          {/* Confetti Decorative Background SVG */}
+          <div style={{ position: 'absolute', inset: 0, opacity: 0.8, pointerEvents: 'none', zIndex: 1 }}>
+            <svg width="100%" height="100%" viewBox="0 0 800 200" fill="none">
+              <path d="M120 40 L125 45" stroke="#F59E0B" strokeWidth="3" strokeLinecap="round" />
+              <path d="M450 30 L458 38" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round" />
+              <path d="M280 160 L286 168" stroke="#EC4899" strokeWidth="3" strokeLinecap="round" />
+              <path d="M50 120 L53 125" stroke="#10B981" strokeWidth="3.5" strokeLinecap="round" />
+              <circle cx="680" cy="50" r="12" stroke="#8B5CF6" strokeWidth="1.5" strokeDasharray="3 3" />
+            </svg>
+          </div>
+
+          {/* Left Contents */}
+          <div style={{ position: 'relative', zIndex: 3, flex: '1 1 360px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            {/* Top Benefit Badge */}
+            <div>
+              <span style={{ background: '#2563EB', color: '#fff', fontSize: '12px', fontWeight: 800, padding: '5px 12px', borderRadius: '6px', boxShadow: '0 2px 6px rgba(37,99,235,0.2)' }}>
+                사전예약 혜택
+              </span>
+            </div>
+
+            {/* Titles */}
+            <div>
+              <div style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 900, color: '#0F2942', letterSpacing: '-0.8px', lineHeight: 1.25 }}>
+                환절기 독감 <span style={{ color: '#2563EB' }}>예방접종</span> 예약
+              </div>
+              <div style={{ fontSize: '15px', color: '#4B5563', fontWeight: 600, marginTop: '6px' }}>
+                사전예약 시 <span style={{ color: '#2563EB', fontWeight: 800 }}>5,000원 할인</span>
+              </div>
+            </div>
+
+            {/* Bottom Badges */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '4px' }}>
+              <span style={{ background: '#2563EB', color: '#fff', fontSize: '12.5px', fontWeight: 700, padding: '5px 13px', borderRadius: '999px', boxShadow: '0 2px 5px rgba(37,99,235,0.15)' }}>
+                {getHospitalName(featuredEvent.hospitalId)}
+              </span>
+              <span style={{ background: '#fff', border: '1px solid #E2E8F0', color: '#4B5563', fontSize: '12px', fontWeight: 600, padding: '4px 12px', borderRadius: '999px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                {featuredEvent.period.split('~')[0].trim()} ~ {featuredEvent.period.split('~')[1].trim()}
+              </span>
+              <span style={{ background: '#FEE2E2', color: '#EF4444', fontSize: '12px', fontWeight: 800, padding: '5px 11px', borderRadius: '999px' }}>
+                {featuredEvent.dday}
+              </span>
             </div>
           </div>
-          <div style={{ flexShrink: 0, width: '160px', height: '110px', borderRadius: '14px', background: getHospitalBg(featuredEvent.hospitalId) }}></div>
+
+          {/* Center 3D Gift Box Image (Desktop Only) */}
+          <div className="event-banner-gift" style={{ position: 'absolute', left: '52%', top: '50%', transform: 'translate(-50%, -50%)', width: '150px', height: '150px', zIndex: 2, background: `url('/uploads/event_gift_box.png') center/contain no-repeat`, pointerEvents: 'none' }}></div>
+
+          {/* Right Blended Hospital Image */}
+          <div className="event-banner-hospital" style={{ position: 'relative', width: '220px', height: '140px', borderRadius: '16px', overflow: 'hidden', flexShrink: 0, zIndex: 2, marginLeft: '24px' }}>
+            <div style={{ width: '100%', height: '100%', background: getHospitalBg(featuredEvent.hospitalId) }}></div>
+            {/* Blending Gradient Overlay on the left edge */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(230,240,250,1) 0%, rgba(230,240,250,0) 40%)', pointerEvents: 'none' }}></div>
+          </div>
         </div>
       )}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginTop: '16px' }}>

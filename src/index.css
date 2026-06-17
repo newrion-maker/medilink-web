@@ -236,3 +236,13 @@ html, body {
     font-size: 11.5px;
   }
 }
+
+/* Event Banner Responsive Styles */
+@media (max-width: 768px) {
+  .event-banner-gift {
+    display: none !important;
+  }
+  .event-banner-hospital {
+    display: none !important;
+  }
+}
