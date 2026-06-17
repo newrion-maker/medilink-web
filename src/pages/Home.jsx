@@ -248,8 +248,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Center 3D Gift Box Image (Desktop Only) */}
-          <div className="event-banner-gift" style={{ position: 'absolute', left: '52%', top: '50%', transform: 'translate(-50%, -50%)', width: '150px', height: '150px', zIndex: 2, background: `url('/uploads/event_gift_box.png') center/contain no-repeat`, pointerEvents: 'none' }}></div>
+
 
           {/* Right Blended Hospital Image */}
           <div className="event-banner-hospital" style={{ position: 'relative', width: '220px', height: '140px', borderRadius: '16px', overflow: 'hidden', flexShrink: 0, zIndex: 2, marginLeft: '24px' }}>
