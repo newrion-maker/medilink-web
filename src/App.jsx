@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Hospitals from './pages/Hospitals';
 import HospitalDetail from './pages/HospitalDetail';
+import HospitalRegister from './pages/HospitalRegister';
 import Qna from './pages/Qna';
 import QnaDetail from './pages/QnaDetail';
 import QnaWrite from './pages/QnaWrite';
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/hospitals" element={<Hospitals />} />
+            <Route path="/hospital/register" element={<HospitalRegister />} />
             <Route path="/hospital/:id" element={<HospitalDetail />} />
             <Route path="/qna" element={<Qna />} />
             <Route path="/qna/write" element={<QnaWrite />} />

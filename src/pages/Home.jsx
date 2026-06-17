@@ -47,8 +47,20 @@ export default function Home() {
         <div className="hero-illustration"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content-box">
+          {/* Hospital Registration Link */}
+          <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '16px' }}>
+            <div 
+              onClick={() => navigate('/hospital/register')} 
+              className="hover-opacity" 
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'rgba(255,255,255,0.75)', backdropFilter: 'blur(8px)', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 700, color: '#1B5C9B', cursor: 'pointer', border: '1px solid rgba(27,92,155,0.15)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}
+            >
+              <span>우리 병원 정보 등록하기</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+
           {/* Centered Heading */}
-          <div style={{ textAlign: 'center', width: '100%', paddingTop: 'clamp(48px, 6vw, 76px)' }}>
+          <div style={{ textAlign: 'center', width: '100%', paddingTop: 'clamp(24px, 4vw, 48px)' }}>
             <div style={{ fontSize: 'clamp(26px,3.4vw,40px)', fontWeight: 800, lineHeight: 1.3, letterSpacing: '-1.2px' }}>
               남양주 <span style={{ color: '#1B5C9B' }}>안심 병원</span>들과 함께하는<br/>우리 가족 건강 관리
             </div>
