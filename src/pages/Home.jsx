@@ -45,7 +45,7 @@ export default function Home() {
       {/* Hero */}
       <div style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', background: '#E5F1FE', overflow: 'hidden', position: 'relative' }}>
         <div style={{ position: 'absolute', inset: 0, maxWidth: '1600px', margin: '0 auto', background: `url('/uploads/hero2.png?v=2') center bottom / contain no-repeat` }}></div>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center top, rgba(229,241,254,0.92) 0%, rgba(229,241,254,0.6) 50%, rgba(229,241,254,0.1) 100%)', pointerEvents: 'none' }}></div>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(229,241,254,0.85) 0%, rgba(229,241,254,0.3) 40%, rgba(229,241,254,0) 75%)', pointerEvents: 'none' }}></div>
         <div style={{ maxWidth: '1080px', width: '100%', margin: '0 auto', padding: '0 clamp(16px,4vw,28px)', position: 'relative', zIndex: 2, minHeight: 'clamp(440px, 46vw, 640px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           {/* Centered Heading */}
           <div style={{ textAlign: 'center', width: '100%', paddingTop: 'clamp(48px, 6vw, 76px)' }}>
