@@ -253,8 +253,6 @@ export default function Home() {
           {/* Right Blended Hospital Image */}
           <div className="event-banner-hospital" style={{ position: 'relative', width: '220px', height: '140px', borderRadius: '16px', overflow: 'hidden', flexShrink: 0, zIndex: 2, marginLeft: '24px' }}>
             <div style={{ width: '100%', height: '100%', background: getHospitalBg(featuredEvent.hospitalId) }}></div>
-            {/* Blending Gradient Overlay on the left edge */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(230,240,250,1) 0%, rgba(230,240,250,0) 40%)', pointerEvents: 'none' }}></div>
           </div>
         </div>
       )}
