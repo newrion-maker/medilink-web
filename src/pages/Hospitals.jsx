@@ -19,13 +19,33 @@ export default function Hospitals() {
     }
   }, [location.state]);
 
+  const getCategoryFromQuery = (query) => {
+    const q = query.replace(/\s+/g, '');
+    if (/무릎|시큰|어깨|관절|통증|도수|척추|허리|뼈|정형/.test(q)) return '정형외과';
+    if (/내과|감기|내시경|소화|기침|간|배가|속이/.test(q)) return '내과';
+    if (/소아|아이|영유아|예방접종/.test(q)) return '소아과';
+    if (/임신|여성|산부인과|자궁/.test(q)) return '산부인과';
+    if (/치과|이빨|임플란트|충치|스케일링/.test(q)) return '치과';
+    if (/눈|안과|시력|라식|라섹|백내장|눈곱/.test(q)) return '안과';
+    if (/귀|코|목|이비인후|비염|중이염|코걸이/.test(q)) return '이비인후과';
+    if (/가정|만성질환|상담/.test(q)) return '가정의학과';
+    return null;
+  };
+
   const filteredHospitals = hospitals.filter(h => {
     const matchesCategory = category === '전체' 
       ? true 
       : category === '신규개원' 
         ? !!h.openedAt 
         : h.cats.includes(category);
-    const matchesSearch = !search || h.name.includes(search) || h.desc.includes(search);
+        
+    const mappedCat = getCategoryFromQuery(search);
+    const matchesSearch = !search 
+      || h.name.includes(search) 
+      || h.desc.includes(search)
+      || h.cats.some(cat => cat.includes(search))
+      || (mappedCat && h.cats.includes(mappedCat));
+      
     return matchesCategory && matchesSearch;
   });
   
