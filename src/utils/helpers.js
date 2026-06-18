@@ -1,14 +1,15 @@
 export const badgeStyle = (answered) => {
   const base = { 
-    padding: '4px 11px', 
+    height: '24px',
+    padding: '0 11px', 
     borderRadius: '7px', 
-    fontSize: '12.5px', 
+    fontSize: '12px', 
     fontWeight: 700, 
     whiteSpace: 'nowrap', 
     display: 'inline-flex', 
     alignItems: 'center', 
     justifyContent: 'center',
-    lineHeight: 1
+    boxSizing: 'border-box'
   };
   return answered ? { ...base, background: '#D5F5E3', color: '#1E8449' } : { ...base, background: '#FEF9E7', color: '#9A7D0A' };
 };

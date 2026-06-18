@@ -82,13 +82,13 @@ export function QnaCard({ qna, hospitalName }) {
           <span style={catColor(qna.category)}>{qna.category}</span>
         </div>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flex: '0 0 auto' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flex: '0 0 auto', height: '24px' }}>
         <span style={badgeStyle(answered)}>{statusLabel}</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#94A3B8', lineHeight: 1 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#94A3B8', height: '24px' }}>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ display: 'block' }}><path d="M21 11.5a8 8 0 0 1-11.5 7.2L4 20l1.3-4.5A8 8 0 1 1 21 11.5Z" stroke="#94A3B8" strokeWidth="1.8" strokeLinejoin="round"/></svg>
           <span style={{ lineHeight: 1 }}>{qna.answerCount || 0}</span>
         </div>
-        <span style={{ fontSize: '13px', color: '#B6C2CF', lineHeight: 1, display: 'inline-flex', alignItems: 'center' }}>{qna.createdAt}</span>
+        <span style={{ fontSize: '13px', color: '#B6C2CF', display: 'inline-flex', alignItems: 'center', height: '24px' }}>{qna.createdAt}</span>
       </div>
     </div>
   );
